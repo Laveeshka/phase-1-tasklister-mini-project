@@ -44,7 +44,7 @@ function createTaskHandler(task){
   ul.appendChild(li);
 
   //listen to delete event when we click on the delete button
-  deleteBtn.addEventListener("change", deleteTaskHandler);
+  deleteBtn.addEventListener("click", deleteTaskHandler);
 }
 
 function deleteTaskHandler(e){
