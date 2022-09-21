@@ -19,14 +19,39 @@ function createTaskHandler(task){
   //create delete button attached to the link
   let deleteBtn = document.createElement("button");
   deleteBtn.textContent = 'x';
+  //append delete button to li
   li.appendChild(deleteBtn);
+
+  //create dropdown element
+  const dropdown = document.createElement("select");
+  //create array of options to be added
+  const optionsArray = ["red", "yellow", "green"];
+  //append the options to the dropdown element
+  optionsArray.forEach(opt => {
+    let option = document.createElement("option");
+    option.value = opt;
+    option.text = opt; 
+    dropdown.appendChild(option);
+  });
+  //append dropdown element to li element
+  li.appendChild(dropdown);
+
+  dropdown.addEventListener("change", changeTaskColourHandler);
+
+
+  //append li element to parent, ul
   let ul = document.getElementById("tasks");
   ul.appendChild(li);
 
   //listen to delete event when we click on the delete button
-  deleteBtn.addEventListener("click", deleteTaskHandler);
+  deleteBtn.addEventListener("change", deleteTaskHandler);
 }
 
 function deleteTaskHandler(e){
   e.target.parentNode.remove();
+}
+
+function changeTaskColourHandler(e){
+  console.log(e.target.value);
+  e.target.parentNode.style.color = e.target.value;
 }
